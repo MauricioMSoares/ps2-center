@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: black;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+}
