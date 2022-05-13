@@ -24,16 +24,23 @@
     <div class="container">
         <div id="caixa_cadastro">
             <form>
-                <label for="input_nome">Nome: </label>
-                <input id="input_nome" class="input_cadastro">
-                <label for="input_apelido">Apelido (opcional): </label>
-                <input id="input_apelido" class="input_cadastro">
-                <label for="input_email">E-mail: </label>
-                <input id="input_email" class="input_cadastro">
-                <label for="input_senha">Senha: </label>
-                <input type="password" id="input_senha" class="input_cadastro">
-                <label for="input_confirmar_senha">Confirmar senha: </label>
-                <input type="password" id="input_confirmar_senha" class="input_cadastro">
+                <div class="caixa nome">
+                    <input id="input_nome" class="input_cadastro" onkeyup="validarNome()" placeholder="Nome">
+                    <input id="input_apelido" class="input_cadastro" onkeyup="validarApelido()" placeholder="Apelido">
+                </div>
+                <span class="mensagem nome">Seu nome e apelido devem ter no mínimo 3 letras</span>
+
+                <input id="input_email" class="input_cadastro" onkeyup="validarEmail()" placeholder="E-mail">
+                <span class="mensagem email">Seu email deve conter @ e terminar em .com</span>
+
+                <div class="caixa senha">
+                    <input type="password" id="input_senha" class="input_cadastro" onkeyup="validarSenha()"
+                        placeholder="Senha">
+                    <input type="password" id="input_confirmar_senha" class="input_cadastro"
+                        onkeyup="validarConfirmarSenha()" placeholder="Confirmar senha">
+                </div>
+                <span class="mensagem senha">Sua senha deve ter no mínimo uma letra maiúscula, 
+                    minúscula, número e caractere especial</span>
             </form>
         </div>
     </div>
@@ -41,3 +48,5 @@
 </body>
 
 </html>
+
+<script src="../js/cadastro.js"></script>
