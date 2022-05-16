@@ -69,23 +69,23 @@ a:hover {
     height: 100%;
 }
 
-.descricao_playstation2 {
+.descricao {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 550px;
+    height: 525px;
 }
 
-.textos.playstation2 {
+.textos {
     color: black;
     width: 40%;
 }
 
-.textos.playstation2 h2 {
+.textos h2 {
     font-weight: 500;
 }
 
-.descricao_playstation2 img {
+.descricao img {
     width: 500px;
 }
 
