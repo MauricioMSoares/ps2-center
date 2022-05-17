@@ -14,7 +14,7 @@
     <div class="container header">
         <div class="header">
             <div class="titulo">
-                <img src="../imgs/playstation-icon-header.png" alt="Ícone PlayStation">
+                <img src="../imgs/playstation-icon.jpg" alt="Ícone PlayStation">
                 <h1>PS2 Center</h1>
             </div>
             <div class="navbar">
@@ -25,17 +25,18 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container cadastro">
         <div id="caixa_cadastro">
             <form>
+                <h1>Cadastre-se aqui</h1>
                 <div class="caixa nome">
                     <input id="input_nome" class="input_cadastro" placeholder="Nome">
                     <input id="input_apelido" class="input_cadastro" placeholder="Apelido">
                 </div>
-                <span id="mensagem_nome" class="mensagem">Seu nome e apelido devem ter no mínimo 3 letras</span>
+                <div id="mensagem_nome" class="mensagem">Seu nome e apelido devem ter no mínimo 3 letras</div>
 
                 <input id="input_email" class="input_cadastro" placeholder="E-mail">
-                <span id="mensagem_email" class="mensagem">Seu e-mail deve conter @ e terminar em .com</span>
+                <div id="mensagem_email" class="mensagem">Seu e-mail deve conter @ e terminar em .com</div>
 
                 <div class="caixa senha">
                     <input type="password" id="input_senha" class="input_cadastro" placeholder="Senha">
@@ -44,12 +45,22 @@
                 </div>
                 <span id="mensagem_senha" class="mensagem">Sua senha deve ter no mínimo 8 caracteres, uma letra maiúscula,
                     minúscula, número e caractere especial</span>
+
+                <div class="caixa mostrar">
+                    <input type="checkbox" id="input_exibir_senha" onclick="exibir_senha()">
+                    <span id="span_exibir">Exibir senha</span>
+                </div>
+
                 <div class="caixa botoes">
                     <a href="login.html">Já possui uma conta? Faça seu login</a>
                     <button type="button" id="button_cadastrar" onclick="cadastrar()">Enviar</button>
                 </div>
             </form>
+            <img src="../imgs/playstation2-gif.gif" alt="GIF de um console PlayStation 2 rodando em sentido horário">
         </div>
+    </div>
+    <div class="footer">
+        <p>Mauricio Massayuki Takabataki Leal Soares &copy; 2022</p>
     </div>
 
 </body>
