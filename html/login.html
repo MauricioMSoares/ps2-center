@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>PS2 Center | Login</title>
+</head>
+
+<body>
+
+    <div class="container header">
+        <div class="header">
+            <div class="titulo">
+                <img src="../imgs/playstation-icon.jpg" alt="Ícone PlayStation">
+                <h1>PS2 Center</h1>
+            </div>
+            <div class="navbar">
+                <ul><a href="index.html">Home</a></ul>
+                <ul><a href="cadastro.html">Cadastro</a></ul>
+                <ul><a href="#"><b>Login</b></a></ul>
+                <ul><a href="#">Vote aqui!</a></ul>
+            </div>
+        </div>
+    </div>
+    <div class="container login">
+        <div id="caixa_login">
+            <form>
+                <h1>Iniciar sessão</h1>
+                <input id="input_email" class="input_login" placeholder="E-mail">
+                <div id="mensagem_email" class="mensagem"></div>
+
+                <div class="caixa senha">
+                    <input type="password" id="input_senha" class="input_login" placeholder="Senha">
+                    <input type="password" id="input_confirmar_senha" class="input_login"
+                        placeholder="Confirmar senha">
+                </div>
+                <span id="mensagem_senha" class="mensagem"></span>
+
+                <div class="caixa mostrar">
+                    <input type="checkbox" id="input_exibir_senha" onclick="exibir_senha()">
+                    <span id="span_exibir">Exibir senha</span>
+                </div>
+
+                <div class="caixa botoes">
+                    <a href="cadastro.html">Não possui uma conta? Crie uma aqui!</a>
+                    <button type="button" id="button_login" onclick="login()">Enviar</button>
+                </div>
+            </form>
+            <img src="../imgs/playstation2-gif.gif" alt="GIF de um console PlayStation 2 rodando em sentido horário">
+        </div>
+    </div>
+    <div class="footer">
+        <p>Mauricio Massayuki Takabataki Leal Soares &copy; 2022</p>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../js/login.js"></script>
