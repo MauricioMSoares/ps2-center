@@ -120,7 +120,7 @@ body {
     width: 420px;
 }
 
-#caixa_cadastro form h1 {
+form h1 {
     font-weight: 500;
     margin-bottom: 25px;
 }
@@ -169,7 +169,7 @@ form .caixa.botoes {
     color: #3a3a3a;
 }
 
-#button_cadastrar {
+form .button {
     font-family: 'Open Sans', 'Trebuchet MS', Calibri, sans-serif;
     font-weight: 500;
     font-size: 15px;
@@ -182,8 +182,36 @@ form .caixa.botoes {
     color: white;
 }
 
-#button_cadastrar:hover {
+form button:hover {
     background-color: rgb(196, 196, 196);
     color: black;
     transition: 0.5s;
+}
+
+/*-----------------------------Login--------------------------------*/
+
+.container.login {
+    display: flex;
+    align-items: center;
+}
+
+#caixa_login {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 700px;
+    width: 100%;
+    font-size: 13px;
+}
+
+#caixa_login .input_login {
+    width: 324px;
+    height: 30px;
+    border-radius: 10px;
+    border: #2c2c2c solid 1px;
+}
+
+form .button.login {
+    width: 90px;
+    margin-top: 0;
 }
