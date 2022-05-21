@@ -5,7 +5,7 @@ CREATE TABLE usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 	nomeUsuario VARCHAR(45) NOT NULL,
     apelidoUsuario VARCHAR(45),
-	email VARCHAR(45) NOT NULL,
+	email VARCHAR(45) UNIQUE NOT NULL,
 	senha VARCHAR(45) NOT NULL,
     fkJogo INT,
     FOREIGN KEY (fkJogo) REFERENCES jogo(idJogo)

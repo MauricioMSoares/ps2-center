@@ -4,6 +4,7 @@ function cadastrar() {
     var email = input_email.value.trim();
     var senha = input_senha.value;
     var confirmarSenha = input_confirmar_senha.value;
+    var validado = 0;
     const abrir_span = "<span style=color:red>";
     const fechar_span = "</span>";
 
@@ -23,6 +24,7 @@ function cadastrar() {
         }
         else {
             mensagem_nome.innerHTML = "";
+            validado++;
         }
     }
 
@@ -38,6 +40,7 @@ function cadastrar() {
         }
         else {
             mensagem_email.innerHTML = "";
+            validado++;
         }
     }
 
@@ -60,7 +63,56 @@ function cadastrar() {
         }
         else {
             mensagem_senha.innerHTML = "";
+            validado++
         }
+    }
+
+    if (input_apelido.value == "") {
+        apelido = "replace_null";
+    }
+    console.log(apelido)
+
+    if (validado == 3) {
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nome,
+                apelidoServer: apelido,
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                /* cardErro.style.display = "block"; */
+
+                /* mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login..."; */
+                alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                /* limparFormulario(); */
+                /* finalizarAguardar(); */
+            } else {
+                alert("Houve um erro ao tentar realizar o cadastro!");
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            /* finalizarAguardar(); */
+        });
+
+        return false;
     }
 }
 
