@@ -71,11 +71,15 @@ function entrar() {
                     console.log(JSON.stringify(json));
 
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.APELIDO_USUARIO = json.apelidoUsuario;
                     sessionStorage.ID_USUARIO = json.id;
+                    if (json.apelidoUsuario = "null") {
+                        sessionStorage.APELIDO_USUARIO = "replace_null";
+                    }
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "../dashboard/jogos.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
