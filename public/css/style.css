@@ -141,7 +141,7 @@ form .mensagem {
     height: 30px;
 }
 
-form #mensagem_senha {
+#caixa_cadastro form #mensagem_senha {
     height: 0;
     margin-bottom: 40px;
 }
@@ -187,7 +187,7 @@ form button:hover {
     color: black;
     transition: 0.5s;
 }
-
+/* 
 .loading-div {
     width: 50px;
     margin: auto;
@@ -197,7 +197,7 @@ form button:hover {
   .loading-div img {
     height: 50px;
     width: 50px;
-  }
+  } */
 
 /*-----------------------------Login--------------------------------*/
 
@@ -213,6 +213,10 @@ form button:hover {
     height: 700px;
     width: 100%;
     font-size: 13px;
+}
+
+#caixa_login form {
+    width: 330px;
 }
 
 #caixa_login .input_login {

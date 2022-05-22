@@ -70,7 +70,6 @@ function cadastrar() {
     if (input_apelido.value == "") {
         apelido = "replace_null";
     }
-    console.log(apelido)
 
     if (validado == 3) {
         // Enviando o valor da nova input
@@ -99,7 +98,7 @@ function cadastrar() {
 
                 setTimeout(() => {
                     window.location = "login.html";
-                }, "2000")
+                }, "1000")
                 
                 /* limparFormulario(); */
                 /* finalizarAguardar(); */
