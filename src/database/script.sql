@@ -14,6 +14,6 @@ CREATE TABLE usuario (
 CREATE TABLE jogo (
 	idJogo INT PRIMARY KEY AUTO_INCREMENT,
 	nomeJogo VARCHAR(70) NOT NULL,
-    sinopse VARCHAR(255) NOT NULL,
+    sinopse VARCHAR(500) NOT NULL,
 	qtdVotos INT
 ); 

@@ -9,7 +9,7 @@
     <title>PS2 Center | Jogos</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao()/* , colocar_imagem() */">
 
     <div class="container header">
         <div class="header">
@@ -19,7 +19,41 @@
             </div>
             <div class="navbar">
                 <ul>Olá, <span id="b_usuario">usuário</span>!</ul>
+                <ul><a href="#"><b>Jogos</b></a></ul>
+                <ul><a href="dashboard.html">Gráficos</a></ul>
                 <ul><a href="#" onclick="limparSessao()">Sair</a></ul>
+            </div>
+        </div>
+    </div>
+    <div class="container jogos">
+        <div id="lista_jogos">
+            <div class="jogo esquerda">
+                <img src="../assets/cover-ben10.jpg" alt="Ben 10 Protector of Earth">
+                <div class="info">
+                    <h3>Ben 10 Protector of Earth</h3>
+                    <span>
+                        O enredo trata das aventuras de um garoto chamado Ben Tennyson, 
+                        sua prima Gwen e o avô Max. Após manter contato com forças 
+                        extraterrestres, Ben recebeu o poder de se mutar, tomando diversas 
+                        formas alienígenas.
+                    </span>
+                    <!-- <iframe width="390" height="190" src="https://www.youtube.com/embed/24YimYGr5eo" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe> -->
+                </div>
+            </div>
+            <div class="jogo direita">
+                <img src="../assets/cover-shrek.jpg" alt="Shrek Super Slam">
+            </div>
+            <div class="jogo esquerda">
+                <img src="../assets/cover-madagascar.jpg" alt="Madagascar">
+            </div>
+            <div class="jogo direita">
+                <img src="../assets/cover-gow.jpg" alt="God of War">
+            </div>
+            <div class="jogo esquerda">
+                <img src="../assets/cover-mafia.jpg" alt="Mafia Game">
             </div>
         </div>
     </div>
@@ -29,3 +63,4 @@
 </html>
 
 <script src="../js/funcoes.js"></script>
+<script src="../js/jogos.js"></script>

@@ -230,3 +230,25 @@ form .button.login {
     width: 90px;
     margin-top: 0;
 }
+
+/*------------------------------Jogos-------------------------------*/
+
+#lista_jogos {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.jogo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.jogo img {
+    width: 200px;
+}
+
+.jogo.esquerda .info {
+    margin-left: 30px;
+}
