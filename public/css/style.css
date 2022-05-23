@@ -21,6 +21,7 @@ body {
     border-bottom: black solid 3px;
     width: 80%;
     position: fixed;
+    z-index: 999;
 }
 
 .header {
@@ -169,7 +170,7 @@ form .caixa.botoes {
     color: #3a3a3a;
 }
 
-form .button {
+.button {
     font-family: 'Open Sans', 'Trebuchet MS', Calibri, sans-serif;
     font-weight: 500;
     font-size: 15px;
@@ -182,7 +183,7 @@ form .button {
     color: white;
 }
 
-form button:hover {
+.button:hover {
     background-color: rgb(196, 196, 196);
     color: black;
     transition: 0.5s;
@@ -249,6 +250,20 @@ form .button.login {
     width: 200px;
 }
 
-.jogo.esquerda .info {
+.jogo .info {
     margin-left: 30px;
+}
+
+.info h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info h4 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.info .button {
+    margin-top: 5px;
 }
