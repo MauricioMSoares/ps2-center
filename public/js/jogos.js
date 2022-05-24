@@ -1,21 +1,27 @@
+var voto = 0;
 function votarBen() {
-
+    voto = 1;
+    votar();
 }
 
 function votarShrek() {
-
+    voto = 2;
+    votar();
 }
 
 function votarMadagascar() {
-
+    voto = 3;
+    votar();
 }
 
 function votarGow() {
-
+    voto = 4;
+    votar();
 }
 
 function votarMafia() {
-
+    voto = 5;
+    votar();
 }
 
 function votar() {
