@@ -11,8 +11,9 @@
 
 <!--NESTA ÁREA HÁ DUAS ABERTURAS DE <body>. 
     UTILIZE A <body> PARA ACESSAR AS PÁGINAS DO REPOSITÓRIO dashboard SEM O npm start-->
-        
+
 <!-- <body onload="validarSessao()"> -->
+
 <body>
 
     <div class="container header">
@@ -26,6 +27,15 @@
                 <ul><a href="#"><b>Jogos</b></a></ul>
                 <ul><a href="dashboard.html">Gráficos</a></ul>
                 <ul><a href="#" onclick="limparSessao()">Sair</a></ul>
+            </div>
+        </div>
+    </div>
+    <div class="container confirmacao">
+        <div id="caixa_confirmar_voto">
+            <span>Deseja confirmar seu voto?</span><br>
+            <div id="caixa_botoes">
+                <button onclick="confirmar_voto()">Sim</button>
+                <button onclick="cancelar_voto()">Não</button>
             </div>
         </div>
     </div>

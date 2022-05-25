@@ -267,3 +267,18 @@ form .button.login {
 .info .button {
     margin-top: 5px;
 }
+
+.container.confirmacao {
+    display: flex;
+    justify-content: center;
+}
+
+#caixa_confirmar_voto {
+    position: fixed;
+    height: 300px;
+    width: 500px;
+    margin-top: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
