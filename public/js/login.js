@@ -73,8 +73,8 @@ function entrar() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.APELIDO_USUARIO = json.apelidoUsuario;
-                    sessionStorage.ID_USUARIO = json.id;
-                    if (json.apelidoUsuario = "null") {
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    if (json.apelidoUsuario == "null") {
                         sessionStorage.APELIDO_USUARIO = "replace_null";
                     }
 

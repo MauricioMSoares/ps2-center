@@ -44,7 +44,7 @@ function votar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.ID_USUARIO = json.idUsuario;
                 sessionStorage.VOTO_USUARIO = json.voto;
 
                 //CONFERIR

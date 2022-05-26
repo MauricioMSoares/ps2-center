@@ -2,6 +2,7 @@
 function validarSessao() {
     // aguardar();
 
+    var id = sessionStorage.ID_USUARIO;
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
     var apelido = sessionStorage.APELIDO_USUARIO;

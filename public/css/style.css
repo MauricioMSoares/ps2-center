@@ -278,7 +278,7 @@ form .button.login {
     height: 300px;
     width: 500px;
     margin-top: 250px;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
 }
