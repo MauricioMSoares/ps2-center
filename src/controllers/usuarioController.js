@@ -112,14 +112,15 @@ function votar(req, res) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
-                    if (resultado.length == 1) {
+                    /* if (resultado.length == 1) {
                         console.log(resultado);
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
                         res.status(403).send("Erro");
                     } else {
                         res.status(403).send("Erro 2");
-                    }
+                    } */
+                    alert("Voto realizado com sucesso!");
                 }
             ).catch(
                 function (erro) {

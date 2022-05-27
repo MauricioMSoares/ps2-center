@@ -25,6 +25,8 @@ function votarMafia() {
 }
 
 function votar() {
+    var id = sessionStorage.ID_USUARIO;
+
     fetch("/usuarios/votar", {
         method: "POST",
         headers: {
@@ -43,9 +45,6 @@ function votar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-
-                sessionStorage.ID_USUARIO = json.idUsuario;
-                sessionStorage.VOTO_USUARIO = json.voto;
 
                 //CONFERIR
                 setTimeout(function () {
