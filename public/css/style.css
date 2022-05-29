@@ -14,6 +14,7 @@ body {
 
 .container.header {
     margin: 0;
+    top: 0;
     padding: 0 10%;
     display: flex;
     justify-content: space-between;
@@ -281,4 +282,29 @@ form .button.login {
     display: none;
     flex-direction: column;
     align-items: center;
+}
+
+/*---------------------------Dashboard----------------------------*/
+
+.graficos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 400px;
+    width: 100%;
+    margin-top: 150px;
+}
+
+.graficos #grafico1 {
+    width: 525px;
+    height: 525px;
+}
+
+.graficos #grafico2 {
+    width: 525px;
+    height: 525px;
+}
+
+.analytics {
+    
 }

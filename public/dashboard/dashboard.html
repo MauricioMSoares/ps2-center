@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS2 Center | Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <!-- scripts do Chart.js -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+
+<!--NESTA ÁREA HÁ DUAS ABERTURAS DE <body>. 
+    UTILIZE A <body> PARA ACESSAR AS PÁGINAS DO REPOSITÓRIO dashboard SEM O npm start-->
+
+<!-- <body onload="validarSessao()"> -->
+
+<body>
+
+    <div class="container header">
+        <div class="header">
+            <div class="titulo">
+                <img src="../assets/playstation-icon.jpg" alt="Ícone PlayStation">
+                <h1>PS2 Center</h1>
+            </div>
+            <div class="navbar">
+                <ul>Olá, <span id="b_usuario">usuário</span>!</ul>
+                <ul><a href="jogos.html">Jogos</a></ul>
+                <ul><a href="#"><b>Gráficos</b></a></ul>
+                <ul><a href="#" onclick="limparSessao()">Sair</a></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container dashboard">
+        <div class="graficos">
+            <div id="grafico1">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div id="grafico2">
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+        <div class="analytics">
+            <p>O jogo mais popular do momento é o <b id="b_jogo_mais_popular">jogo</b>,
+                com um total de <b id="b_qtd_votos">50</b>, equivalente a <b>50%</b> dos votos totais!</p>
+            <p>Você votou em <b id="b_jogo_usuario">jogo</b>.</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const data = {
+        labels: [
+            'Ben 10 Protector of Earth',
+            'Shrek Super Slam',
+            'Madagascar',
+            'God of War',
+            'Mafia'
+        ],
+        datasets: [{
+            label: 'Porcentagem de votos',
+            data: [200, 50, 100, 30, 20],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(255, 205, 86, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 99, 132, 0.8)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const data2 = {
+        labels: [
+            'Ben 10 PoE',
+            'Shrek SS',
+            'Madagascar',
+            'God of War',
+            'Mafia'
+        ],
+        datasets: [{
+            label: 'Quantidade de votos',
+            data: [30, 40, 25, 20, 15],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(255, 159, 64, 0.5)',
+                'rgba(255, 205, 86, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 99, 132, 0.5)'
+            ],
+            borderColor: [
+                'rgb(75, 192, 192)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {}
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>
+
+</html>
+
+<script src="../js/funcoes.js"></script>
+<script src="../js/dashboard.js"></script>
