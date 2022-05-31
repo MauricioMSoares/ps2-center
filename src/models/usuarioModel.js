@@ -49,9 +49,27 @@ function votar(id, voto) {
     return database.executar(instrucao);
 }
 
+function contar_votos(fkJogo) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = ``;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT count(fkJogo) FROM usuario GROUP BY fkJogo`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    votar
+    votar,
+    contar_votos
 };

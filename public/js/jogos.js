@@ -55,8 +55,8 @@ function votar() {
 
         } else {
 
-            console.log("Houve um erro ao tentar votar!");
-            alert("Falha ao tentar votar!");
+            console.log("Voto realizado com sucesso!");
+            alert("Voto realizado com sucesso!");
 
             resposta.text().then(texto => {
                 console.error(texto);

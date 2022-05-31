@@ -55,3 +55,26 @@ INSERT INTO jogo VALUES
 	por seus rivais. Sendo o único carro no meio da rua
 	naquela hora, Tommy recebe uma oferta que ele não
 	pode recusar.', 0);
+
+	INSERT INTO usuario (nomeUsuario, email, senha, fkJogo) VALUES
+	('Amanda', 'amanda@gmail.com', '#Teste11', 3),
+	('Bianca', 'bianca@gmail.com', '#Teste11', 1),
+	('Carlos', 'carlos@gmail.com', '#Teste11', 2),
+	('David', 'david@gmail.com', '#Teste11', 5),
+	('Cintia', 'cintia@gmail.com', '#Teste11', 4),
+	('Elisa', 'elisa@gmail.com', '#Teste11', 1),
+	('Pedro', 'pedro@gmail.com', '#Teste11', 1),
+	('Matheus', 'matheus@gmail.com', '#Teste11', 4),
+	('Gabriel', 'gabriel@gmail.com', '#Teste11', 5),
+	('Lucas', 'lucas@gmail.com', '#Teste11', 2),
+	('Roger', 'roger@gmail.com', '#Teste11', 1),
+	('Danilo', 'danilo@gmail.com', '#Teste11', 3),
+	('Geraldo', 'geraldo@gmail.com', '#Teste11', 5),
+	('Paulo', 'paulo@gmail.com', '#Teste11', 2),
+	('Marcos', 'marcos@gmail.com', '#Teste11', 4),
+	('Ana', 'ana@gmail.com', '#Teste11', 1),
+	('Ramon', 'ramon@gmail.com', '#Teste11', 3),
+	('Nathalia', 'nathalia@gmail.com', '#Teste11', 2),
+	('Bruno', 'bruno@gmail.com', '#Teste11', 5),
+	('Julio', 'julio@gmail.com', '#Teste11', 4),
+	('Fabio', 'fabio@gmail.com', '#Teste11', 1);

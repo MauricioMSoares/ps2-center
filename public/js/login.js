@@ -74,9 +74,6 @@ function entrar() {
                     sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.APELIDO_USUARIO = json.apelidoUsuario;
                     sessionStorage.ID_USUARIO = json.idUsuario;
-                    if (json.apelidoUsuario == "null") {
-                        sessionStorage.APELIDO_USUARIO = "replace_null";
-                    }
 
                     setTimeout(function () {
                         window.location = "../dashboard/jogos.html";

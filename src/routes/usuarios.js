@@ -25,4 +25,9 @@ router.post("/votar", function (req, res) {
     usuarioController.votar(req, res);
 });
 
+//COLETA TODAS AS fkJogo DA TABELA usuario
+router.get("/contar_votos/:fkJogo", function (req, res) {
+    usuarioController.contar_votos(req, res);
+});
+
 module.exports = router;

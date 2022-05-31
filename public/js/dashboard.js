@@ -1,10 +1,10 @@
 let proximaAtualizacao;
 
-window.onload = obterDadosGrafico(1);
+window.onload = obterDadosGrafico();
 
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-verificar_autenticacao();
+/* verificar_autenticacao(); */
 
 /* function alterarTitulo(idAquario) {
     var tituloAquario = document.getElementById("tituloAquario")
@@ -22,20 +22,20 @@ verificar_autenticacao();
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico(idAquario) {
-    alterarTitulo(idAquario)
+function obterDadosGrafico() {
+    /* alterarTitulo(idAquario) */
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/usuario/contar_votos`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-                plotarGrafico(resposta, idAquario);
+                plotarGrafico(resposta);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -49,29 +49,72 @@ function obterDadosGrafico(idAquario) {
 // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
 // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-function plotarGrafico(resposta, idAquario) {
+function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
 
     var dados = {
-        labels: [],
-        datasets: [
-            {
-                yAxisID: 'y-umidade',
-                label: 'Umidade',
-                borderColor: '#32B9CD',
-                backgroundColor: '#32b9cd8f',
-                fill: true,
-                data: []
-            },
-            {
-                yAxisID: 'y-temperatura',
-                label: 'Temperatura',
-                borderColor: '#FFF',
-                backgroundColor: '#32b9cd8f',
-                fill: true,
-                data: []
+        labels: [
+            'Ben 10 Protector of Earth',
+            'Shrek Super Slam',
+            'Madagascar',
+            'God of War',
+            'Mafia'
+        ],
+        datasets: [{
+            label: 'Porcentagem de votos',
+            data: [],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(255, 205, 86, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 99, 132, 0.8)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    var dados = {
+        labels: [
+            'Ben 10 PoE',
+            'Shrek SS',
+            'Madagascar',
+            'God of War',
+            'Mafia'
+        ],
+        datasets: [{
+            label: 'Quantidade de votos',
+            data: [],
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(255, 159, 64, 0.5)',
+                'rgba(255, 205, 86, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 99, 132, 0.5)'
+            ],
+            borderColor: [
+                'rgb(75, 192, 192)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: dados,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
-        ]
+        }
     };
 
     for (i = 0; i < resposta.length; i++) {
@@ -83,49 +126,14 @@ function plotarGrafico(resposta, idAquario) {
 
     console.log(JSON.stringify(dados));
 
-    var ctx = canvas_grafico.getContext('2d');
-    window.grafico_linha = Chart.Line(ctx, {
+    var config = canvas_grafico.getContext('2d');
+    window.grafico_linha = Chart.Pie(config = {
+        type: 'pie',
         data: dados,
-        options: {
-            responsive: true,
-            animation: { duration: 500 },
-            hoverMode: 'index',
-            stacked: false,
-            title: {
-                display: false,
-                text: 'Dados capturados'
-            },
-            scales: {
-                yAxes: [{
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                    id: 'y-temperatura',
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        min: 0
-                    }
-                }, {
-                    type: 'linear',
-                    display: false,
-                    position: 'right',
-                    id: 'y-umidade',
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        min: 0
-                    },
-
-                    gridLines: {
-                        drawOnChartArea: false,
-                    },
-                }],
-            }
-        }
+        options: {}
     });
 
-    setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+    setTimeout(() => atualizarGrafico(dados), 2000);
 }
 
 
@@ -134,9 +142,9 @@ function plotarGrafico(resposta, idAquario) {
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(idAquario, dados) {
+function atualizarGrafico(dados) {
 
-    fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -156,12 +164,12 @@ function atualizarGrafico(idAquario, dados) {
                 window.grafico_linha.update();
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
         }
     })
         .catch(function (error) {
