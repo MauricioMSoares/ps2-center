@@ -22,14 +22,14 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico() {
+function obterDadosGrafico(fkJogo) {
     /* alterarTitulo(idAquario) */
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/usuario/contar_votos`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/usuario/contar_votos/${fkJogo}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);

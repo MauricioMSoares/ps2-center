@@ -138,7 +138,7 @@ function contar_votos() {
 
     console.log(`Recuperando as ultimas medidas`);
 
-    medidaModel.contar_votos(fkJogo).then(function (resultado) {
+    usuarioModel.contar_votos(fkJogo).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
