@@ -2,7 +2,12 @@ let proximaAtualizacao;
 
 window.onload = obterDadosGrafico();
 
-b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+if (sessionStorage.APELIDO_USUARIO == "null") {
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+}
+else {
+    b_usuario.innerHTML = sessionStorage.APELIDO_USUARIO;
+}
 
 /* verificar_autenticacao(); */
 
@@ -33,8 +38,8 @@ function obterDadosGrafico() {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-
+                /* resposta.reverse(); */
+                console.log(resposta);
                 plotarGrafico(resposta);
             });
         } else {
@@ -120,20 +125,20 @@ function plotarGrafico(resposta) {
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         dados.labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade);
-        dados.datasets[1].data.push(registro.temperatura);
+        dados.datasets[0].data.push(registro.fkJogo);
+        /* dados.datasets[1].data.push(registro.temperatura); */
     }
 
     console.log(JSON.stringify(dados));
 
-    var config = canvas_grafico.getContext('2d');
+    var config = myChart.getContext('2d');
     window.grafico_linha = Chart.Pie(config, {
         type: 'pie',
         data: dados,
         options: {}
     });
 
-    setTimeout(() => atualizarGrafico(dados), 2000);
+    setTimeout(() => atualizarGrafico(config2), 2000);
 }
 
 
@@ -156,10 +161,10 @@ function atualizarGrafico(dados) {
                 dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                 dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                dados.datasets[0].data.push(novoRegistro[0].fkJogo); // incluir uma nova medida de umidade
 
-                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                /* dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[1].data.push(novoRegistro[0].temperatura); */ // incluir uma nova medida de temperatura
 
                 window.grafico_linha.update();
 
