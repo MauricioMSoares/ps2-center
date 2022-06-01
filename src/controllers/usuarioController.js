@@ -133,12 +133,11 @@ function votar(req, res) {
 
 }
 
-function contar_votos() {
-    var fkJogo = req.params.fkJogo;
+function contar_votos(req, res) {
 
     console.log(`Recuperando as ultimas medidas`);
 
-    usuarioModel.contar_votos(fkJogo).then(function (resultado) {
+    usuarioModel.contar_votos().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

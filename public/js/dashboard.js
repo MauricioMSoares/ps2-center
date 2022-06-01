@@ -22,14 +22,14 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico(fkJogo) {
+function obterDadosGrafico() {
     /* alterarTitulo(idAquario) */
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/usuario/contar_votos/${fkJogo}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/usuarios/contar_votos`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -74,7 +74,7 @@ function plotarGrafico(resposta) {
         }]
     };
 
-    var dados = {
+    var dados2 = {
         labels: [
             'Ben 10 PoE',
             'Shrek SS',
@@ -105,7 +105,7 @@ function plotarGrafico(resposta) {
 
     const config2 = {
         type: 'bar',
-        data: dados,
+        data: dados2,
         options: {
             scales: {
                 yAxes: [{
@@ -127,7 +127,7 @@ function plotarGrafico(resposta) {
     console.log(JSON.stringify(dados));
 
     var config = canvas_grafico.getContext('2d');
-    window.grafico_linha = Chart.Pie(config = {
+    window.grafico_linha = Chart.Pie(config, {
         type: 'pie',
         data: dados,
         options: {}

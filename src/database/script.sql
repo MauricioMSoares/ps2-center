@@ -78,3 +78,11 @@ INSERT INTO jogo VALUES
 	('Bruno', 'bruno@gmail.com', '#Teste11', 5),
 	('Julio', 'julio@gmail.com', '#Teste11', 4),
 	('Fabio', 'fabio@gmail.com', '#Teste11', 1);
+
+SELECT count(fkJogo) AS 'Total de Votos' FROM usuario;
+
+SELECT j.nomeJogo AS 'Jogo', count(u.fkJogo) AS 'Votos'
+FROM jogo AS j
+JOIN usuario AS u ON u.fkJogo = j.idJogo
+GROUP BY u.fkJogo
+ORDER BY count(fkJogo) DESC;
