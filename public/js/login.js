@@ -34,21 +34,6 @@ function entrar() {
             validado++
         }
     }
-    /* aguardar();   */ 
-
-        /* if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
- */
 
     if (validado == 2) {
         fetch("/usuarios/autenticar", {
@@ -74,6 +59,7 @@ function entrar() {
                     sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.APELIDO_USUARIO = json.apelidoUsuario;
                     sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.NOMEJOGO_USUARIO = json.nomeJogo;
 
                     setTimeout(function () {
                         window.location = "../dashboard/jogos.html";

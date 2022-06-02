@@ -290,7 +290,7 @@ form .button.login {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 400px;
+    height: 325px;
     width: 100%;
     margin-top: 150px;
 }
@@ -303,8 +303,4 @@ form .button.login {
 .graficos #grafico2 {
     width: 525px;
     height: 525px;
-}
-
-.analytics {
-    
 }

@@ -13,13 +13,6 @@ var vetor_jogos = [];
 var vetor_votos = [];
 var vetor_porcentagem_votos = [];
 
-/* verificar_autenticacao(); */
-
-/* function alterarTitulo(idAquario) {
-    var tituloAquario = document.getElementById("tituloAquario")
-    tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
-} */
-
 // O gráfico é construído com três funções:
 // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
 // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -32,7 +25,6 @@ var vetor_porcentagem_votos = [];
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
 function obterDadosGrafico() {
-    /* alterarTitulo(idAquario) */
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
@@ -42,7 +34,6 @@ function obterDadosGrafico() {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                /* resposta.reverse(); */
                 console.log(resposta);
 
                 function atualizar_vetores() {
@@ -69,6 +60,9 @@ function obterDadosGrafico() {
 
                 atualizar_vetores();
                 calcular_porcentagem_votos();
+                exibir_jogo_mais_votado();
+                exibir_porcentagem_jogo_mais_votado();
+                exibir_jogo_favorito_usuario();
                 plotarGrafico(resposta);
             });
         } else {
@@ -95,7 +89,6 @@ function plotarGrafico(resposta) {
             'Mafia'
         ],
         datasets: [{
-            label: 'Porcentagem de votos',
             data: [vetor_porcentagem_votos[0], vetor_porcentagem_votos[1], vetor_porcentagem_votos[2], vetor_porcentagem_votos[3], vetor_porcentagem_votos[4]],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.8)',
@@ -138,9 +131,15 @@ function plotarGrafico(resposta) {
     };
 
     const config = {
-        type: 'pie',
+        type: 'doughnut',
         data: data,
-        options: {}
+        options: {
+            title: {
+                display: true,
+                text: 'Porcentagem de votos (%)',
+                fontSize: 16
+            }
+        }
     };
 
     const config2 = {
@@ -167,22 +166,39 @@ function plotarGrafico(resposta) {
         config2
     );
 
-    /* for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        dados.labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.fkJogo);
-        dados.datasets[1].data.push(registro.temperatura);
-    } */
-
-    atualizar_vetores();
     console.log(JSON.stringify(dados));
+}
 
-/*     var config = myChart.getContext('2d');
-    window.grafico_linha = Chart.Pie(config, {
-        type: 'pie',
-        data: dados,
-        options: {}
-    }); */
+function exibir_jogo_mais_votado() {
+    var jogoMaisVotado = "";
+    var votosJogoMaisVotado = 0;
+    for (var contador = 0; contador < vetor_jogos.length; contador++) {
+        if (vetor_votos[contador] > votosJogoMaisVotado) {
+            votosJogoMaisVotado = vetor_votos[contador];
+            jogoMaisVotado = vetor_jogos[contador];
+        }
+    }
+    b_jogo_mais_popular.innerHTML = jogoMaisVotado;
+    b_qtd_votos.innerHTML = votosJogoMaisVotado;
+}
 
-    /* setTimeout(() => atualizarGrafico(dados), 2000); */
+function exibir_porcentagem_jogo_mais_votado() {
+    var porcentagemJogoMaisVotado = 0;
+    for (var contador = 0; contador < vetor_porcentagem_votos.length; contador++) {
+        if (vetor_porcentagem_votos[contador] > porcentagemJogoMaisVotado) {
+            porcentagemJogoMaisVotado = vetor_porcentagem_votos[contador];
+        }
+    }
+    b_porcentagem_votos.innerHTML = porcentagemJogoMaisVotado;
+}
+
+function exibir_jogo_favorito_usuario() {
+    var jogoFavoritoUsuario = sessionStorage.NOMEJOGO_USUARIO;
+    if (jogoFavoritoUsuario == "null") {
+        p_jogo_usuario.innerHTML = `Você ainda não votou em nenhum jogo. 
+        <a href="../dashboard/jogos.html">Vote aqui!</a>`;
+    }
+    else {
+        b_jogo_usuario.innerHTML = jogoFavoritoUsuario;
+    }
 }

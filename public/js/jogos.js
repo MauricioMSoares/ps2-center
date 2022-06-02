@@ -2,26 +2,31 @@ var voto = 0;
 function votarBen() {
     voto = 1;
     votar();
+    sessionStorage.setItem("NOMEJOGO_USUARIO", "Ben 10 Protector of Earth");
 }
 
 function votarShrek() {
     voto = 2;
     votar();
+    sessionStorage.setItem("NOMEJOGO_USUARIO", "Shrek Super Slam");
 }
 
 function votarMadagascar() {
     voto = 3;
     votar();
+    sessionStorage.setItem("NOMEJOGO_USUARIO", "Madagascar");
 }
 
 function votarGow() {
     voto = 4;
     votar();
+    sessionStorage.setItem("NOMEJOGO_USUARIO", "God of War");
 }
 
 function votarMafia() {
     voto = 5;
     votar();
+    sessionStorage.setItem("NOMEJOGO_USUARIO", "Mafia");
 }
 
 function votar() {
@@ -57,6 +62,9 @@ function votar() {
 
             console.log("Voto realizado com sucesso!");
             alert("Voto realizado com sucesso!");
+            setTimeout(function () {
+                window.location = "dashboard.html";
+            }, 1000);
 
             resposta.text().then(texto => {
                 console.error(texto);
