@@ -9,6 +9,10 @@ else {
     b_usuario.innerHTML = sessionStorage.APELIDO_USUARIO;
 }
 
+var vetor_jogos = [];
+var vetor_votos = [];
+var vetor_porcentagem_votos = [];
+
 /* verificar_autenticacao(); */
 
 /* function alterarTitulo(idAquario) {
@@ -40,6 +44,31 @@ function obterDadosGrafico() {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 /* resposta.reverse(); */
                 console.log(resposta);
+
+                function atualizar_vetores() {
+                    for (var contador = 0; contador < resposta.length; contador++) {
+                        vetor_jogos.push(resposta[contador].nomeJogo);
+                        vetor_votos.push(resposta[contador].votosPorJogo);
+                    }
+                }
+
+                function calcular_porcentagem_votos() {
+                    var totalVotos = vetor_votos[0] + vetor_votos[1] + vetor_votos[2] + vetor_votos[3] + vetor_votos[4];
+                    var calculoPorcentagemVotosBen = (vetor_votos[0] * 100) / totalVotos;
+                    var calculoPorcentagemVotosShrek = (vetor_votos[1] * 100) / totalVotos;
+                    var calculoPorcentagemVotosMadagascar = (vetor_votos[2] * 100) / totalVotos;
+                    var calculoPorcentagemVotosGow = (vetor_votos[3] * 100) / totalVotos;
+                    var calculoPorcentagemVotosMafia = (vetor_votos[4] * 100) / totalVotos;
+                    var porcentagemVotosBen = calculoPorcentagemVotosBen.toFixed(1);
+                    var porcentagemVotosShrek = calculoPorcentagemVotosShrek.toFixed(1);
+                    var porcentagemVotosMadagascar = calculoPorcentagemVotosMadagascar.toFixed(1);
+                    var porcentagemVotosGow = calculoPorcentagemVotosGow.toFixed(1);
+                    var porcentagemVotosMafia = calculoPorcentagemVotosMafia.toFixed(1);
+                    vetor_porcentagem_votos.push(porcentagemVotosBen, porcentagemVotosShrek, porcentagemVotosMadagascar, porcentagemVotosGow, porcentagemVotosMafia);
+                }
+
+                atualizar_vetores();
+                calcular_porcentagem_votos();
                 plotarGrafico(resposta);
             });
         } else {
@@ -57,7 +86,7 @@ function obterDadosGrafico() {
 function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
 
-    var dados = {
+    var data = {
         labels: [
             'Ben 10 Protector of Earth',
             'Shrek Super Slam',
@@ -67,7 +96,7 @@ function plotarGrafico(resposta) {
         ],
         datasets: [{
             label: 'Porcentagem de votos',
-            data: [],
+            data: [vetor_porcentagem_votos[0], vetor_porcentagem_votos[1], vetor_porcentagem_votos[2], vetor_porcentagem_votos[3], vetor_porcentagem_votos[4]],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.8)',
                 'rgba(255, 159, 64, 0.8)',
@@ -79,7 +108,7 @@ function plotarGrafico(resposta) {
         }]
     };
 
-    var dados2 = {
+    var data2 = {
         labels: [
             'Ben 10 PoE',
             'Shrek SS',
@@ -89,7 +118,7 @@ function plotarGrafico(resposta) {
         ],
         datasets: [{
             label: 'Quantidade de votos',
-            data: [],
+            data: [vetor_votos[0], vetor_votos[1], vetor_votos[2], vetor_votos[3], vetor_votos[4]],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.5)',
                 'rgba(255, 159, 64, 0.5)',
@@ -108,9 +137,15 @@ function plotarGrafico(resposta) {
         }]
     };
 
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {}
+    };
+
     const config2 = {
         type: 'bar',
-        data: dados2,
+        data: data2,
         options: {
             scales: {
                 yAxes: [{
@@ -122,63 +157,32 @@ function plotarGrafico(resposta) {
         }
     };
 
-    for (i = 0; i < resposta.length; i++) {
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    /* for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         dados.labels.push(registro.momento_grafico);
         dados.datasets[0].data.push(registro.fkJogo);
-        /* dados.datasets[1].data.push(registro.temperatura); */
-    }
+        dados.datasets[1].data.push(registro.temperatura);
+    } */
 
+    atualizar_vetores();
     console.log(JSON.stringify(dados));
 
-    var config = myChart.getContext('2d');
+/*     var config = myChart.getContext('2d');
     window.grafico_linha = Chart.Pie(config, {
         type: 'pie',
         data: dados,
         options: {}
-    });
+    }); */
 
-    setTimeout(() => atualizarGrafico(config2), 2000);
-}
-
-
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas, 
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(dados) {
-
-    fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (novoRegistro) {
-
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico: ${dados}`);
-
-                // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].fkJogo); // incluir uma nova medida de umidade
-
-                /* dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].temperatura); */ // incluir uma nova medida de temperatura
-
-                window.grafico_linha.update();
-
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
-        }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
-
+    /* setTimeout(() => atualizarGrafico(dados), 2000); */
 }
