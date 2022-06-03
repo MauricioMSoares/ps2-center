@@ -173,7 +173,10 @@ function exibir_jogo_mais_votado() {
     var jogoMaisVotado = "";
     var votosJogoMaisVotado = 0;
     for (var contador = 0; contador < vetor_jogos.length; contador++) {
-        if (vetor_votos[contador] > votosJogoMaisVotado) {
+        if (vetor_votos[contador] == votosJogoMaisVotado) {
+            jogoMaisVotado += ", " + vetor_jogos[contador];
+        }
+        else if (vetor_votos[contador] > votosJogoMaisVotado) {
             votosJogoMaisVotado = vetor_votos[contador];
             jogoMaisVotado = vetor_jogos[contador];
         }
