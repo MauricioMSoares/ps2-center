@@ -45,16 +45,11 @@ function obterDadosGrafico() {
 
                 function calcular_porcentagem_votos() {
                     var totalVotos = vetor_votos[0] + vetor_votos[1] + vetor_votos[2] + vetor_votos[3] + vetor_votos[4];
-                    var calculoPorcentagemVotosBen = (vetor_votos[0] * 100) / totalVotos;
-                    var calculoPorcentagemVotosShrek = (vetor_votos[1] * 100) / totalVotos;
-                    var calculoPorcentagemVotosMadagascar = (vetor_votos[2] * 100) / totalVotos;
-                    var calculoPorcentagemVotosGow = (vetor_votos[3] * 100) / totalVotos;
-                    var calculoPorcentagemVotosMafia = (vetor_votos[4] * 100) / totalVotos;
-                    var porcentagemVotosBen = calculoPorcentagemVotosBen.toFixed(1);
-                    var porcentagemVotosShrek = calculoPorcentagemVotosShrek.toFixed(1);
-                    var porcentagemVotosMadagascar = calculoPorcentagemVotosMadagascar.toFixed(1);
-                    var porcentagemVotosGow = calculoPorcentagemVotosGow.toFixed(1);
-                    var porcentagemVotosMafia = calculoPorcentagemVotosMafia.toFixed(1);
+                    var porcentagemVotosBen = (vetor_votos[0] * 100) / totalVotos;
+                    var porcentagemVotosShrek = (vetor_votos[1] * 100) / totalVotos;
+                    var porcentagemVotosMadagascar = (vetor_votos[2] * 100) / totalVotos;
+                    var porcentagemVotosGow = (vetor_votos[3] * 100) / totalVotos;
+                    var porcentagemVotosMafia = (vetor_votos[4] * 100) / totalVotos;
                     vetor_porcentagem_votos.push(porcentagemVotosBen, porcentagemVotosShrek, porcentagemVotosMadagascar, porcentagemVotosGow, porcentagemVotosMafia);
                 }
 
@@ -175,6 +170,8 @@ function exibir_jogo_mais_votado() {
     for (var contador = 0; contador < vetor_jogos.length; contador++) {
         if (vetor_votos[contador] == votosJogoMaisVotado) {
             jogoMaisVotado += ", " + vetor_jogos[contador];
+            span_dados_pt1.innerHTML = "Os jogos mais populares do momento são";
+            span_dados_pt2.innerHTML = "cada";
         }
         else if (vetor_votos[contador] > votosJogoMaisVotado) {
             votosJogoMaisVotado = vetor_votos[contador];
@@ -189,7 +186,7 @@ function exibir_porcentagem_jogo_mais_votado() {
     var porcentagemJogoMaisVotado = 0;
     for (var contador = 0; contador < vetor_porcentagem_votos.length; contador++) {
         if (vetor_porcentagem_votos[contador] > porcentagemJogoMaisVotado) {
-            porcentagemJogoMaisVotado = vetor_porcentagem_votos[contador];
+            porcentagemJogoMaisVotado = vetor_porcentagem_votos[contador].toFixed(1);
         }
     }
     b_porcentagem_votos.innerHTML = porcentagemJogoMaisVotado;
