@@ -160,8 +160,6 @@ function plotarGrafico(resposta) {
         document.getElementById('myChart2'),
         config2
     );
-
-    console.log(JSON.stringify(dados));
 }
 
 function exibir_jogo_mais_votado() {
@@ -185,11 +183,14 @@ function exibir_jogo_mais_votado() {
 function exibir_porcentagem_jogo_mais_votado() {
     var porcentagemJogoMaisVotado = 0;
     for (var contador = 0; contador < vetor_porcentagem_votos.length; contador++) {
-        if (vetor_porcentagem_votos[contador] > porcentagemJogoMaisVotado) {
-            porcentagemJogoMaisVotado = vetor_porcentagem_votos[contador].toFixed(1);
+        if (vetor_porcentagem_votos[contador] == porcentagemJogoMaisVotado) {
+            porcentagemJogoMaisVotado += vetor_porcentagem_votos[contador];
+        }
+        else if (vetor_porcentagem_votos[contador] > porcentagemJogoMaisVotado) {
+            porcentagemJogoMaisVotado = vetor_porcentagem_votos[contador];
         }
     }
-    b_porcentagem_votos.innerHTML = porcentagemJogoMaisVotado;
+    b_porcentagem_votos.innerHTML = porcentagemJogoMaisVotado.toFixed(1);
 }
 
 function exibir_jogo_favorito_usuario() {

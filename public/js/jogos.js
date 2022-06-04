@@ -61,14 +61,13 @@ function votar() {
         } else {
 
             console.log("Voto realizado com sucesso!");
-            alert("Voto realizado com sucesso!");
+            alert("Voto realizado com sucesso! Redirecionando para a tela de gráficos...");
             setTimeout(function () {
                 window.location = "dashboard.html";
             }, 1000);
 
             resposta.text().then(texto => {
                 console.error(texto);
-                /* finalizarAguardar(texto); */
             });
         }
 
