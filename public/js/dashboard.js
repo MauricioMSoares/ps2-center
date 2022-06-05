@@ -84,7 +84,8 @@ function plotarGrafico(resposta) {
             'Mafia'
         ],
         datasets: [{
-            data: [vetor_porcentagem_votos[0], vetor_porcentagem_votos[1], vetor_porcentagem_votos[2], vetor_porcentagem_votos[3], vetor_porcentagem_votos[4]],
+            data: [vetor_porcentagem_votos[0].toFixed(1), vetor_porcentagem_votos[1].toFixed(1), 
+            vetor_porcentagem_votos[2].toFixed(1), vetor_porcentagem_votos[3].toFixed(1), vetor_porcentagem_votos[4].toFixed(1)],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.8)',
                 'rgba(255, 159, 64, 0.8)',
