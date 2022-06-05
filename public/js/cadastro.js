@@ -91,24 +91,19 @@ function cadastrar() {
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                /* cardErro.style.display = "block"; */
-
-                /* mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login..."; */
                 alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "1000")
-                
-                /* limparFormulario(); */
-                /* finalizarAguardar(); */
+
             } else {
                 alert("Houve um erro ao tentar realizar o cadastro!");
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            /* finalizarAguardar(); */
+
         });
 
         return false;

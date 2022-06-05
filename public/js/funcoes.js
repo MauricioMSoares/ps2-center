@@ -11,10 +11,8 @@ function validarSessao() {
     var b_usuario = document.getElementById("b_usuario");
 
     if (email != null && apelido != "null") {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
         b_usuario.innerHTML = apelido;
 
-        // finalizarAguardar();
     } else if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
 
@@ -24,9 +22,7 @@ function validarSessao() {
 }
 
 function limparSessao() {
-    // aguardar();
     sessionStorage.clear();
-    // finalizarAguardar();
     window.location = "../login.html";
 }
 

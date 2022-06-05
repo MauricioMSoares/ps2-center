@@ -26,7 +26,7 @@ INSERT INTO jogo VALUES
 	(null, 'God of War'),
 	(null, 'Mafia');
 
-	INSERT INTO usuario (nomeUsuario, email, senha, fkJogo) VALUES
+INSERT INTO usuario (nomeUsuario, email, senha, fkJogo) VALUES
 	('Amanda', 'amanda@gmail.com', '#Teste11', 3),
 	('Bianca', 'bianca@gmail.com', '#Teste11', 1),
 	('Carlos', 'carlos@gmail.com', '#Teste11', 2),
