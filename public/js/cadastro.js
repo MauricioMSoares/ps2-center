@@ -13,14 +13,14 @@ function cadastrar() {
     validarSenha();
 
     function validarNomeApelido() {
-        if (nome.length < 2 && apelido.length != 0 && apelido.length < 2) {
-            mensagem_nome.innerHTML = abrir_span + "Digite um nome e um apelido com mais de 3 caracteres" + fechar_span;
+        if (nome.length <= 2 && apelido.length != 0 && apelido.length <= 2) {
+            mensagem_nome.innerHTML = abrir_span + "Digite um nome e um apelido com mais de 2 caracteres" + fechar_span;
         }
-        else if (nome.length < 2) {
-            mensagem_nome.innerHTML = abrir_span + "Digite um nome com mais de 3 caracteres" + fechar_span;
+        else if (nome.length <= 2) {
+            mensagem_nome.innerHTML = abrir_span + "Digite um nome com mais de 2 caracteres" + fechar_span;
         }
-        else if (apelido.length != 0 && apelido.length < 2) {
-            mensagem_nome.innerHTML = abrir_span + "Digite um apelido com mais de 3 caracteres" + fechar_span;
+        else if (apelido.length != 0 && apelido.length <= 2) {
+            mensagem_nome.innerHTML = abrir_span + "Digite um apelido com mais de 2 caracteres" + fechar_span;
         }
         else {
             mensagem_nome.innerHTML = "";
@@ -68,7 +68,7 @@ function cadastrar() {
     }
 
     if (input_apelido.value == "") {
-        apelido = "replace_null";
+        apelido = "null";
     }
 
     if (validado == 3) {

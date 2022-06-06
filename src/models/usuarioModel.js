@@ -28,9 +28,16 @@ function cadastrar(nome, apelido, email, senha) {
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao = `
-        INSERT INTO usuario (nomeUsuario, apelidoUsuario, email, senha) VALUES ('${nome}', '${apelido}', '${email}', '${senha}');
-    `;
+    if (apelido == "null") {
+        var instrucao = `
+            INSERT INTO usuario (nomeUsuario, apelidoUsuario, email, senha) VALUES ('${nome}', null, '${email}', '${senha}');
+        `;
+    }
+    else {
+        var instrucao = `
+            INSERT INTO usuario (nomeUsuario, apelidoUsuario, email, senha) VALUES ('${nome}', '${apelido}', '${email}', '${senha}');
+        `;
+    }
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
